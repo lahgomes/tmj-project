@@ -44,7 +44,6 @@ export default function RegisterPage() {
       return
     }
 
-    // Registration successful → redirect to login
     router.push("/login?registered=true")
   }
 

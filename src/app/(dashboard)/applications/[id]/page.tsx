@@ -1,6 +1,6 @@
 "use client"
 
-import { use, useState, useEffect, useCallback } from "react"
+import { use, useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -118,21 +118,25 @@ export default function ApplicationDetailPage({
   const [noteContent, setNoteContent] = useState("")
   const [savingNote, setSavingNote] = useState(false)
 
-  const fetchApplication = useCallback(async () => {
-    const res = await fetch(`/api/applications/${id}`)
-    if (res.status === 404) {
-      setNotFound(true)
-      setLoading(false)
-      return
-    }
-    const data = await res.json()
-    setApplication(data)
-    setLoading(false)
-  }, [id])
-
   useEffect(() => {
-    fetchApplication()
-  }, [fetchApplication])
+    let cancelled = false
+
+    async function load() {
+      const res = await fetch(`/api/applications/${id}`)
+      if (cancelled) return
+      if (res.status === 404) {
+        setNotFound(true)
+        setLoading(false)
+        return
+      }
+      const data = await res.json()
+      setApplication(data)
+      setLoading(false)
+    }
+
+    load()
+    return () => { cancelled = true }
+  }, [id])
 
   async function updateStatus(status: ApplicationStatus) {
     const res = await fetch(`/api/applications/${id}`, {
