@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TMJ — Track My Jobs
 
-## Getting Started
+> Buscar emprego é difícil. Se organizar não precisa ser.
 
-First, run the development server:
+**TMJ** é uma aplicação web para acompanhar processos seletivos de forma simples e centralizada. Registre cada candidatura, acompanhe as etapas do processo, adicione anotações e mantenha o foco em conseguir a vaga certa.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Projeto desenvolvido como portfólio pessoal, com foco em aprender e praticar desenvolvimento fullstack moderno.
+
+---
+
+## Funcionalidades
+
+- Cadastro e autenticação com e-mail e senha
+- Dashboard com visão geral das candidaturas
+- CRUD completo de candidaturas (cargo, empresa, plataforma, modalidade, status, tags)
+- Registro de etapas do processo seletivo com status de conclusão
+- Anotações por candidatura
+- Filtro por status e busca por cargo ou empresa
+- Interface responsiva, mobile first
+
+---
+
+## Stack
+
+| Camada | Tecnologia |
+|---|---|
+| Framework | [Next.js 16](https://nextjs.org) (App Router) |
+| Linguagem | TypeScript 5 |
+| Estilo | [Tailwind CSS v4](https://tailwindcss.com) |
+| Componentes | [shadcn/ui](https://ui.shadcn.com) (preset Nova, Radix UI) |
+| Autenticação | [NextAuth.js v5](https://authjs.dev) (Credentials) |
+| ORM | [Prisma 7](https://www.prisma.io) |
+| Banco de dados | [Neon](https://neon.tech) (PostgreSQL serverless) |
+| Validação | [Zod v4](https://zod.dev) |
+| Ícones | [Lucide React](https://lucide.dev) |
+| Runtime | Node.js 24 |
+
+---
+
+## Estrutura do projeto
+
+```
+src/
+  app/
+    (auth)/         páginas de login e registro
+    (dashboard)/    layout autenticado, dashboard e candidaturas
+    api/            API Routes (applications, stages, notes)
+    page.tsx        landing page pública
+  components/
+    ui/             componentes shadcn/ui
+    sidebar.tsx     navegação lateral do dashboard
+    status-badge.tsx badge de status das candidaturas
+  lib/
+    auth.ts         configuração do NextAuth
+    db.ts           cliente Prisma com adapter Neon
+    validations.ts  schemas Zod
+  generated/
+    prisma/         client Prisma gerado
+prisma/
+  schema.prisma     modelo de dados
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Rodando localmente
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Pré-requisitos
 
-## Learn More
+- Node.js 18+
+- Conta no [Neon](https://neon.tech) (banco de dados PostgreSQL)
 
-To learn more about Next.js, take a look at the following resources:
+### Instalação
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+# clone o repositório
+git clone https://github.com/lahgomes/tmj-project.git
+cd tmj-project
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# instale as dependências
+npm install
 
-## Deploy on Vercel
+# configure as variáveis de ambiente
+cp .env.example .env
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Preencha o `.env` com suas credenciais:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```env
+DATABASE_URL=postgresql://...    # connection string do Neon
+NEXTAUTH_SECRET=sua_chave_secreta
+NEXTAUTH_URL=http://localhost:3000
+```
+
+```bash
+# aplique as migrations e gere o client Prisma
+npx prisma migrate deploy
+npx prisma generate
+
+# inicie o servidor de desenvolvimento
+npm run dev
+```
+
+Acesse [http://localhost:3000](http://localhost:3000).
+
+---
+
+## Deploy
+
+A aplicação está configurada para deploy na [Vercel](https://vercel.com). Basta conectar o repositório e adicionar as variáveis de ambiente pelo painel da Vercel.
+
+---
+
+## Autora
+
+Feito com carinho por [Larissa Gomes](https://www.linkedin.com/in/larissagomes19/).
+
