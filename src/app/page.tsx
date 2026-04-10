@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import {
   Briefcase,
-  CheckCircle2,
   LayoutDashboard,
   ListChecks,
   StickyNote,
@@ -58,18 +57,22 @@ export default function Home() {
       </header>
 
       {/* Hero */}
-      <section className="flex-1 flex flex-col items-center justify-center text-center px-6 py-24">
+      <section className="flex flex-col items-center text-center px-6 pt-24 pb-16">
         <Badge variant="secondary" className="mb-6">
           Gratuito para usar
         </Badge>
 
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight max-w-2xl leading-tight">
-          Organize sua busca por emprego em um só lugar
+          Buscar emprego é difícil.{" "}
+          <span className="text-muted-foreground">
+            Se organizar não precisa ser.
+          </span>
         </h1>
 
         <p className="mt-6 text-lg text-muted-foreground max-w-xl">
-          Acompanhe cada candidatura, registre as etapas do processo seletivo e
-          nunca mais perca o fio da meada na sua busca por emprego.
+          Recolocação, mudança de área, primeiro emprego — qualquer busca tem
+          suas etapas. O TMJ te ajuda a acompanhar cada candidatura, registrar
+          os processos e manter o foco sem perder o controle.
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row gap-3">
@@ -80,34 +83,23 @@ export default function Home() {
             <Link href="/login">Já tenho uma conta</Link>
           </Button>
         </div>
-
-        {/* Social proof */}
-        <div className="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-muted-foreground">
-          {[
-            "Sem cartão de crédito",
-            "Sem anúncios",
-            "Dados só seus",
-          ].map((item) => (
-            <span key={item} className="flex items-center gap-1.5">
-              <CheckCircle2 className="size-4 text-green-600" />
-              {item}
-            </span>
-          ))}
-        </div>
       </section>
 
-      {/* Features */}
-      <section className="border-t bg-muted/30 px-6 py-20">
+      {/* Features — visualmente conectado ao Hero com divisor suave */}
+      <section className="px-6 py-16">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold text-center mb-12">
-            Tudo que você precisa para gerenciar sua busca
-          </h2>
+          <p className="text-center text-xs font-medium tracking-widest uppercase text-muted-foreground mb-10">
+            O que você encontra aqui
+          </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {features.map((feature) => (
-              <div key={feature.title} className="flex gap-4">
-                <div className="shrink-0 size-10 rounded-lg bg-background border flex items-center justify-center">
-                  <feature.icon className="size-5 text-muted-foreground" />
+              <div
+                key={feature.title}
+                className="flex gap-4 rounded-xl border bg-card p-5"
+              >
+                <div className="shrink-0 size-10 rounded-lg bg-muted flex items-center justify-center">
+                  <feature.icon className="size-5 text-foreground" />
                 </div>
                 <div>
                   <h3 className="font-semibold mb-1">{feature.title}</h3>
@@ -122,13 +114,13 @@ export default function Home() {
       </section>
 
       {/* CTA final */}
-      <section className="border-t px-6 py-20 text-center">
+      <section className="border-t bg-muted/30 px-6 py-20 text-center">
         <h2 className="text-2xl font-bold mb-4">
-          Pronto para organizar sua busca?
+          Pronto para ter mais clareza na sua busca?
         </h2>
-        <p className="text-muted-foreground mb-8">
-          Crie sua conta gratuitamente e comece a acompanhar suas candidaturas
-          agora.
+        <p className="text-muted-foreground mb-8 max-w-md mx-auto">
+          Crie sua conta e comece a organizar suas candidaturas agora. Simples,
+          rápido e gratuito.
         </p>
         <Button size="lg" asChild>
           <Link href="/register">Criar conta grátis</Link>
