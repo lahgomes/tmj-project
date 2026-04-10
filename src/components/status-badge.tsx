@@ -14,32 +14,32 @@ const statusConfig: Record<
   { label: string; className: string }
 > = {
   APPLIED: {
-    label: "Applied",
+    label: "Candidatado",
     className:
       "bg-blue-100 text-blue-800 hover:bg-blue-100 dark:bg-blue-900/40 dark:text-blue-300",
   },
   SCREENING: {
-    label: "Screening",
+    label: "Triagem",
     className:
       "bg-amber-100 text-amber-800 hover:bg-amber-100 dark:bg-amber-900/40 dark:text-amber-300",
   },
   INTERVIEW: {
-    label: "Interview",
+    label: "Entrevista",
     className:
       "bg-purple-100 text-purple-800 hover:bg-purple-100 dark:bg-purple-900/40 dark:text-purple-300",
   },
   OFFER: {
-    label: "Offer",
+    label: "Oferta",
     className:
       "bg-green-100 text-green-800 hover:bg-green-100 dark:bg-green-900/40 dark:text-green-300",
   },
   REJECTED: {
-    label: "Rejected",
+    label: "Rejeitado",
     className:
       "bg-red-100 text-red-800 hover:bg-red-100 dark:bg-red-900/40 dark:text-red-300",
   },
   GHOSTED: {
-    label: "Ghosted",
+    label: "Sem resposta",
     className:
       "bg-zinc-100 text-zinc-600 hover:bg-zinc-100 dark:bg-zinc-800 dark:text-zinc-400",
   },

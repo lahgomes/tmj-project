@@ -52,8 +52,8 @@ export default function RegisterPage() {
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 px-4">
       <Card className="w-full max-w-sm">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Create account</CardTitle>
-          <CardDescription>Start tracking your job applications</CardDescription>
+          <CardTitle className="text-2xl">Criar conta</CardTitle>
+          <CardDescription>Comece a acompanhar suas candidaturas</CardDescription>
         </CardHeader>
 
         <form onSubmit={handleSubmit}>
@@ -65,11 +65,11 @@ export default function RegisterPage() {
             )}
 
             <div className="space-y-2">
-              <Label htmlFor="name">Name</Label>
+              <Label htmlFor="name">Nome</Label>
               <Input
                 id="name"
                 name="name"
-                placeholder="Your name"
+                placeholder="Seu nome"
                 value={form.name}
                 onChange={handleChange}
                 required
@@ -78,12 +78,12 @@ export default function RegisterPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">E-mail</Label>
               <Input
                 id="email"
                 name="email"
                 type="email"
-                placeholder="you@example.com"
+                placeholder="meu-email@exemplo.com"
                 value={form.email}
                 onChange={handleChange}
                 required
@@ -92,12 +92,12 @@ export default function RegisterPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">Senha</Label>
               <Input
                 id="password"
                 name="password"
                 type="password"
-                placeholder="At least 8 characters"
+                placeholder="Mínimo 8 caracteres"
                 value={form.password}
                 onChange={handleChange}
                 required
@@ -106,7 +106,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="confirmPassword">Confirm password</Label>
+              <Label htmlFor="confirmPassword">Confirmar senha</Label>
               <Input
                 id="confirmPassword"
                 name="confirmPassword"
@@ -122,12 +122,12 @@ export default function RegisterPage() {
 
           <CardFooter className="flex flex-col gap-3">
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Creating account..." : "Create account"}
+              {loading ? "Criando conta..." : "Criar conta"}
             </Button>
             <p className="text-center text-sm text-muted-foreground">
-              Already have an account?{" "}
+              Já tem uma conta?{" "}
               <Link href="/login" className="font-medium text-foreground underline underline-offset-4">
-                Sign in
+                Entrar
               </Link>
             </p>
           </CardFooter>

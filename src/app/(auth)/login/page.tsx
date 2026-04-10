@@ -30,7 +30,7 @@ export default function LoginPage() {
     setLoading(false)
 
     if (result?.error) {
-      setError("Invalid email or password")
+      setError("E-mail ou senha inválidos")
       return
     }
 

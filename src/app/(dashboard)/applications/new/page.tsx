@@ -83,7 +83,7 @@ export default function NewApplicationPage() {
     setLoading(false)
 
     if (!res.ok) {
-      setError(data.error ?? "Something went wrong")
+      setError("Algo deu errado")
       return
     }
 
@@ -96,32 +96,32 @@ export default function NewApplicationPage() {
         <Button variant="ghost" size="sm" asChild className="-ml-2 mb-2">
           <Link href="/applications">
             <ArrowLeft className="size-4 mr-2" />
-            Back to Applications
+            Voltar para Candidaturas
           </Link>
         </Button>
-        <h1 className="text-2xl font-bold">New Application</h1>
+        <h1 className="text-2xl font-bold">Nova Candidatura</h1>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Job Details</CardTitle>
+          <CardTitle className="text-base">Detalhes da Vaga</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <Label htmlFor="jobTitle">Job Title *</Label>
+                <Label htmlFor="jobTitle">Cargo *</Label>
                 <Input
                   id="jobTitle"
                   name="jobTitle"
-                  placeholder="Frontend Developer"
+                  placeholder="Desenvolvedor Frontend"
                   value={form.jobTitle}
                   onChange={handleChange}
                   required
                 />
               </div>
               <div className="space-y-1.5">
-                <Label htmlFor="company">Company *</Label>
+                <Label htmlFor="company">Empresa *</Label>
                 <Input
                   id="company"
                   name="company"
@@ -135,7 +135,7 @@ export default function NewApplicationPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <Label htmlFor="platform">Platform *</Label>
+                <Label htmlFor="platform">Plataforma *</Label>
                 <Input
                   id="platform"
                   name="platform"
@@ -152,7 +152,7 @@ export default function NewApplicationPage() {
                 </datalist>
               </div>
               <div className="space-y-1.5">
-                <Label>Work Model *</Label>
+                <Label>Modalidade *</Label>
                 <Select
                   value={form.workModel}
                   onValueChange={(v) =>
@@ -166,9 +166,9 @@ export default function NewApplicationPage() {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="REMOTE">Remote</SelectItem>
-                    <SelectItem value="HYBRID">Hybrid</SelectItem>
-                    <SelectItem value="ONSITE">On-site</SelectItem>
+                    <SelectItem value="REMOTE">Remoto</SelectItem>
+                    <SelectItem value="HYBRID">Híbrido</SelectItem>
+                    <SelectItem value="ONSITE">Presencial</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -176,7 +176,7 @@ export default function NewApplicationPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <Label htmlFor="location">Location</Label>
+                <Label htmlFor="location">Localização</Label>
                 <Input
                   id="location"
                   name="location"
@@ -186,7 +186,7 @@ export default function NewApplicationPage() {
                 />
               </div>
               <div className="space-y-1.5">
-                <Label htmlFor="salary">Salary Range</Label>
+                <Label htmlFor="salary">Faixa Salarial</Label>
                 <Input
                   id="salary"
                   name="salary"
@@ -198,7 +198,7 @@ export default function NewApplicationPage() {
             </div>
 
             <div className="space-y-1.5">
-              <Label htmlFor="jobUrl">Job URL</Label>
+                <Label htmlFor="jobUrl">URL da Vaga</Label>
               <Input
                 id="jobUrl"
                 name="jobUrl"
@@ -219,16 +219,16 @@ export default function NewApplicationPage() {
                 onChange={handleChange}
               />
               <p className="text-xs text-muted-foreground">
-                Separate with commas
+                Separe por vírgulas
               </p>
             </div>
 
             <div className="space-y-1.5">
-              <Label htmlFor="description">Job Description / Notes</Label>
+                <Label htmlFor="description">Descrição / Observações</Label>
               <Textarea
                 id="description"
                 name="description"
-                placeholder="Paste the job description or add your notes..."
+                placeholder="Cole a descrição da vaga ou adicione observações..."
                 rows={4}
                 value={form.description}
                 onChange={handleChange}
@@ -239,10 +239,10 @@ export default function NewApplicationPage() {
 
             <div className="flex gap-3 pt-2">
               <Button type="submit" disabled={loading}>
-                {loading ? "Saving..." : "Save Application"}
+                {loading ? "Salvando..." : "Salvar Candidatura"}
               </Button>
               <Button type="button" variant="outline" asChild>
-                <Link href="/applications">Cancel</Link>
+                <Link href="/applications">Cancelar</Link>
               </Button>
             </div>
           </form>

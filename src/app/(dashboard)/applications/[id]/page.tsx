@@ -81,9 +81,9 @@ type Application = {
 }
 
 const workModelLabel: Record<WorkModel, string> = {
-  REMOTE: "Remote",
-  HYBRID: "Hybrid",
-  ONSITE: "On-site",
+  REMOTE: "Remoto",
+  HYBRID: "Híbrido",
+  ONSITE: "Presencial",
 }
 
 const ALL_STATUSES: ApplicationStatus[] = [
@@ -151,7 +151,7 @@ export default function ApplicationDetailPage({
   async function deleteApplication() {
     if (
       !window.confirm(
-        "Delete this application? This action cannot be undone."
+        "Excluir esta candidatura? Esta ação não pode ser desfeita."
       )
     )
       return
@@ -257,7 +257,7 @@ export default function ApplicationDetailPage({
   if (loading) {
     return (
       <div className="p-6 text-center text-muted-foreground text-sm">
-        Loading...
+        Carregando...
       </div>
     )
   }
@@ -265,9 +265,9 @@ export default function ApplicationDetailPage({
   if (notFound || !application) {
     return (
       <div className="p-6 text-center">
-        <p className="text-muted-foreground mb-4">Application not found.</p>
+        <p className="text-muted-foreground mb-4">Candidatura não encontrada.</p>
         <Button asChild variant="outline">
-          <Link href="/applications">Back to Applications</Link>
+          <Link href="/applications">Voltar para Candidaturas</Link>
         </Button>
       </div>
     )
@@ -280,7 +280,7 @@ export default function ApplicationDetailPage({
         <Button variant="ghost" size="sm" asChild className="-ml-2">
           <Link href="/applications">
             <ArrowLeft className="size-4 mr-2" />
-            Applications
+            Candidaturas
           </Link>
         </Button>
       </div>
@@ -309,7 +309,7 @@ export default function ApplicationDetailPage({
             className="shrink-0"
           >
             <Trash2 className="size-4 mr-2" />
-            Delete
+            Excluir
           </Button>
         </div>
 
@@ -329,7 +329,7 @@ export default function ApplicationDetailPage({
                 rel="noopener noreferrer"
               >
                 <ExternalLink className="size-3.5 mr-1" />
-                View job
+                Ver vaga
               </a>
             </Button>
           )}
@@ -350,7 +350,7 @@ export default function ApplicationDetailPage({
       {/* Status Update */}
       <Card>
         <CardHeader className="pb-3">
-          <CardTitle className="text-sm font-medium">Update Status</CardTitle>
+          <CardTitle className="text-sm font-medium">Atualizar Status</CardTitle>
         </CardHeader>
         <CardContent>
           <Select
@@ -361,11 +361,21 @@ export default function ApplicationDetailPage({
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              {ALL_STATUSES.map((s) => (
-                <SelectItem key={s} value={s}>
-                  {s.charAt(0) + s.slice(1).toLowerCase()}
-                </SelectItem>
-              ))}
+              {ALL_STATUSES.map((s) => {
+                const labels: Record<string, string> = {
+                  APPLIED: "Candidatado",
+                  SCREENING: "Triagem",
+                  INTERVIEW: "Entrevista",
+                  OFFER: "Oferta",
+                  REJECTED: "Rejeitado",
+                  GHOSTED: "Sem resposta",
+                }
+                return (
+                  <SelectItem key={s} value={s}>
+                    {labels[s]}
+                  </SelectItem>
+                )
+              })}
             </SelectContent>
           </Select>
         </CardContent>
@@ -374,29 +384,29 @@ export default function ApplicationDetailPage({
       {/* Stages */}
       <Card>
         <CardHeader className="flex flex-row items-center justify-between pb-3">
-          <CardTitle className="text-base">Stages</CardTitle>
+          <CardTitle className="text-base">Etapas</CardTitle>
           <Dialog open={stageDialogOpen} onOpenChange={setStageDialogOpen}>
             <DialogTrigger asChild>
               <Button size="sm" variant="outline">
                 <Plus className="size-4 mr-2" />
-                Add Stage
+                Adicionar Etapa
               </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-md">
               <DialogHeader>
-                <DialogTitle>New Stage</DialogTitle>
+                <DialogTitle>Nova Etapa</DialogTitle>
               </DialogHeader>
               <div className="space-y-4 pt-2">
                 <div className="space-y-1.5">
-                  <Label>Stage Name *</Label>
+                  <Label>Nome da Etapa *</Label>
                   <Input
-                    placeholder="Technical interview, HR interview..."
+                    placeholder="Entrevista técnica, entrevista com RH..."
                     value={stageName}
                     onChange={(e) => setStageName(e.target.value)}
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <Label>Scheduled Date (optional)</Label>
+                  <Label>Data Agendada (opcional)</Label>
                   <Input
                     type="datetime-local"
                     value={stageScheduledAt}
@@ -404,9 +414,9 @@ export default function ApplicationDetailPage({
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <Label>Notes (optional)</Label>
+                  <Label>Observações (opcional)</Label>
                   <Textarea
-                    placeholder="What to prepare, contact info..."
+                    placeholder="O que preparar, dados de contato..."
                     value={stageNotes}
                     onChange={(e) => setStageNotes(e.target.value)}
                     rows={3}
@@ -417,7 +427,7 @@ export default function ApplicationDetailPage({
                   onClick={addStage}
                   disabled={!stageName.trim() || savingStage}
                 >
-                  {savingStage ? "Saving..." : "Add Stage"}
+                  {savingStage ? "Salvando..." : "Adicionar Etapa"}
                 </Button>
               </div>
             </DialogContent>
@@ -426,7 +436,7 @@ export default function ApplicationDetailPage({
         <CardContent>
           {application.stages.length === 0 ? (
             <p className="text-sm text-muted-foreground">
-              No stages added yet. Track interviews, tests and other steps here.
+              Nenhuma etapa adicionada. Registre entrevistas, testes e outras etapas aqui.
             </p>
           ) : (
             <div className="space-y-3">
@@ -485,12 +495,12 @@ export default function ApplicationDetailPage({
       {/* Notes */}
       <Card>
         <CardHeader className="pb-3">
-          <CardTitle className="text-base">Notes</CardTitle>
+          <CardTitle className="text-base">Anotações</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
             <Textarea
-              placeholder="Add a note about this application..."
+              placeholder="Adicione uma anotação sobre essa candidatura..."
               value={noteContent}
               onChange={(e) => setNoteContent(e.target.value)}
               rows={3}
@@ -500,7 +510,7 @@ export default function ApplicationDetailPage({
               onClick={addNote}
               disabled={!noteContent.trim() || savingNote}
             >
-              {savingNote ? "Saving..." : "Add Note"}
+              {savingNote ? "Salvando..." : "Adicionar Anotação"}
             </Button>
           </div>
 
@@ -536,7 +546,7 @@ export default function ApplicationDetailPage({
       {application.description && (
         <Card>
           <CardHeader className="pb-3">
-            <CardTitle className="text-base">Job Description</CardTitle>
+            <CardTitle className="text-base">Descrição da Vaga</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-sm whitespace-pre-wrap text-muted-foreground">

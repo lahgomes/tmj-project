@@ -46,9 +46,9 @@ type Application = {
 }
 
 const workModelLabel: Record<WorkModel, string> = {
-  REMOTE: "Remote",
-  HYBRID: "Hybrid",
-  ONSITE: "On-site",
+  REMOTE: "Remoto",
+  HYBRID: "Híbrido",
+  ONSITE: "Presencial",
 }
 
 export default function ApplicationsPage() {
@@ -81,11 +81,11 @@ export default function ApplicationsPage() {
   return (
     <div className="p-6 max-w-6xl mx-auto">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold">Applications</h1>
+        <h1 className="text-2xl font-bold">Candidaturas</h1>
         <Button asChild>
           <Link href="/applications/new">
             <Plus className="size-4 mr-2" />
-            New Application
+            Nova Candidatura
           </Link>
         </Button>
       </div>
@@ -97,7 +97,7 @@ export default function ApplicationsPage() {
           className="flex gap-2 flex-1 max-w-sm"
         >
           <Input
-            placeholder="Search by role or company..."
+            placeholder="Buscar por cargo ou empresa..."
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
           />
@@ -108,16 +108,16 @@ export default function ApplicationsPage() {
 
         <Select value={statusFilter} onValueChange={setStatusFilter}>
           <SelectTrigger className="w-40">
-            <SelectValue placeholder="All statuses" />
+            <SelectValue placeholder="Todos os status" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="ALL">All statuses</SelectItem>
-            <SelectItem value="APPLIED">Applied</SelectItem>
-            <SelectItem value="SCREENING">Screening</SelectItem>
-            <SelectItem value="INTERVIEW">Interview</SelectItem>
-            <SelectItem value="OFFER">Offer</SelectItem>
-            <SelectItem value="REJECTED">Rejected</SelectItem>
-            <SelectItem value="GHOSTED">Ghosted</SelectItem>
+            <SelectItem value="ALL">Todos os status</SelectItem>
+            <SelectItem value="APPLIED">Candidatado</SelectItem>
+            <SelectItem value="SCREENING">Triagem</SelectItem>
+            <SelectItem value="INTERVIEW">Entrevista</SelectItem>
+            <SelectItem value="OFFER">Oferta</SelectItem>
+            <SelectItem value="REJECTED">Rejeitado</SelectItem>
+            <SelectItem value="GHOSTED">Sem resposta</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -125,23 +125,23 @@ export default function ApplicationsPage() {
       {/* Table */}
       {loading ? (
         <div className="text-center py-12 text-muted-foreground text-sm">
-          Loading...
+          Carregando...
         </div>
       ) : applications.length === 0 ? (
         <div className="text-center py-12 text-muted-foreground text-sm">
           {search || statusFilter !== "ALL"
-            ? "No applications match the current filters."
-            : "No applications yet. Add your first one!"}
+            ? "Nenhuma candidatura encontrada para os filtros atuais."
+            : "Nenhuma candidatura ainda. Adicione a primeira!"}
         </div>
       ) : (
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Role / Company</TableHead>
-              <TableHead>Platform</TableHead>
-              <TableHead>Work Model</TableHead>
+              <TableHead>Cargo / Empresa</TableHead>
+              <TableHead>Plataforma</TableHead>
+              <TableHead>Modalidade</TableHead>
               <TableHead>Status</TableHead>
-              <TableHead>Date</TableHead>
+              <TableHead>Data</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>

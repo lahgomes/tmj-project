@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils"
 
 const navItems = [
   { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
-  { href: "/applications", icon: Briefcase, label: "Applications" },
+  { href: "/applications", icon: Briefcase, label: "Candidaturas" },
 ]
 
 interface SidebarProps {
@@ -70,7 +70,7 @@ export function Sidebar({ user }: SidebarProps) {
       {/* User footer */}
       <div className="p-3 space-y-1">
         <div className="px-3 py-2">
-          <p className="text-sm font-medium truncate">{user.name ?? "User"}</p>
+          <p className="text-sm font-medium truncate">{user.name ?? "Usuário"}</p>
           <p className="text-xs text-muted-foreground truncate">{user.email}</p>
         </div>
         <Button
@@ -80,7 +80,7 @@ export function Sidebar({ user }: SidebarProps) {
           onClick={() => signOut({ callbackUrl: "/login" })}
         >
           <LogOut className="size-4 mr-2" />
-          Sign out
+          Sair
         </Button>
       </div>
     </aside>

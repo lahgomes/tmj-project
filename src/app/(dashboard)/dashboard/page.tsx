@@ -34,28 +34,28 @@ export default async function DashboardPage() {
 
   const statsCards = [
     {
-      title: "Total Applications",
+      title: "Total de Candidaturas",
       value: total,
       icon: Briefcase,
-      description: "All time",
+      description: "Histórico total",
     },
     {
-      title: "In Progress",
+      title: "Em Andamento",
       value: active,
       icon: TrendingUp,
-      description: "Applied, Screening or Interview",
+      description: "Aplicado, triagem ou entrevista",
     },
     {
-      title: "Interviews",
+      title: "Entrevistas",
       value: interviews,
       icon: MessageCircle,
-      description: "Currently interviewing",
+      description: "Em fase de entrevista",
     },
     {
-      title: "Offers",
+      title: "Ofertas",
       value: offers,
       icon: Trophy,
-      description: "Offers received",
+      description: "Ofertas recebidas",
     },
   ]
 
@@ -63,11 +63,11 @@ export default async function DashboardPage() {
     <div className="p-6 max-w-5xl mx-auto">
       <div className="mb-8">
         <h1 className="text-2xl font-bold">
-          Welcome back
+          Bem-vindo de volta
           {session.user.name ? `, ${session.user.name.split(" ")[0]}` : ""}
         </h1>
         <p className="text-muted-foreground text-sm mt-1">
-          Here&apos;s an overview of your job search.
+          Aqui está um resumo da sua busca de emprego.
         </p>
       </div>
 
@@ -93,18 +93,18 @@ export default async function DashboardPage() {
 
       {/* Recent Applications */}
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold">Recent Applications</h2>
+        <h2 className="text-lg font-semibold">Candidaturas Recentes</h2>
         <Button asChild variant="outline" size="sm">
-          <Link href="/applications">View all</Link>
+          <Link href="/applications">Ver todas</Link>
         </Button>
       </div>
 
       {recent.length === 0 ? (
         <Card>
           <CardContent className="py-12 text-center">
-            <p className="text-muted-foreground mb-4">No applications yet.</p>
+            <p className="text-muted-foreground mb-4">Nenhuma candidatura ainda.</p>
             <Button asChild>
-              <Link href="/applications/new">Add your first application</Link>
+              <Link href="/applications/new">Adicionar primeira candidatura</Link>
             </Button>
           </CardContent>
         </Card>
