@@ -96,7 +96,7 @@ export function Sidebar({ user, isOpen, onClose }: SidebarProps) {
           variant="ghost"
           size="sm"
           className="w-full justify-start text-muted-foreground hover:text-foreground"
-          onClick={() => signOut({ callbackUrl: "/login" })}
+          onClick={() => signOut({ callbackUrl: "/" })}
         >
           <LogOut className="size-4 mr-2" />
           Sair

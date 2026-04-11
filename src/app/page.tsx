@@ -1,12 +1,17 @@
-import Link from "next/link"
+"use client"
+
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { AuthModal } from "@/components/auth-modal"
 import {
   Briefcase,
   LayoutDashboard,
   ListChecks,
   StickyNote,
 } from "lucide-react"
+
+type AuthTab = "login" | "register"
 
 const features = [
   {
@@ -36,8 +41,23 @@ const features = [
 ]
 
 export default function Home() {
+  const [modal, setModal] = useState<{ open: boolean; tab: AuthTab }>({
+    open: false,
+    tab: "login",
+  })
+
+  function openModal(tab: AuthTab) {
+    setModal({ open: true, tab })
+  }
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
+      <AuthModal
+        open={modal.open}
+        defaultTab={modal.tab}
+        onOpenChange={(open) => setModal((prev) => ({ ...prev, open }))}
+      />
+
       {/* Header */}
       <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur-sm">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
@@ -49,11 +69,11 @@ export default function Home() {
             </span>
           </div>
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="sm" asChild>
-              <Link href="/login">Entrar</Link>
+            <Button variant="ghost" size="sm" onClick={() => openModal("login")}>
+              Entrar
             </Button>
-            <Button size="sm" asChild>
-              <Link href="/register">Criar conta</Link>
+            <Button size="sm" onClick={() => openModal("register")}>
+              Criar conta
             </Button>
           </div>
         </div>
@@ -78,11 +98,11 @@ export default function Home() {
         </p>
 
         <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 w-full max-w-xs sm:max-w-none sm:w-auto">
-          <Button size="lg" className="w-full sm:w-auto" asChild>
-            <Link href="/register">Começar agora, é grátis</Link>
+          <Button size="lg" className="w-full sm:w-auto" onClick={() => openModal("register")}>
+            Começar agora, é grátis
           </Button>
-          <Button size="lg" variant="outline" className="w-full sm:w-auto" asChild>
-            <Link href="/login">Já tenho uma conta</Link>
+          <Button size="lg" variant="outline" className="w-full sm:w-auto" onClick={() => openModal("login")}>
+            Já tenho uma conta
           </Button>
         </div>
       </section>
@@ -124,8 +144,8 @@ export default function Home() {
           Crie sua conta e comece a organizar suas candidaturas agora. Simples,
           rápido e gratuito.
         </p>
-        <Button size="lg" className="w-full max-w-xs sm:w-auto" asChild>
-          <Link href="/register">Criar conta grátis</Link>
+        <Button size="lg" className="w-full max-w-xs sm:w-auto" onClick={() => openModal("register")}>
+          Criar conta grátis
         </Button>
       </section>
 
