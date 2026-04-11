@@ -140,7 +140,7 @@ export function AuthModal({
               type="button"
               onClick={() => setTab(t)}
               className={cn(
-                "flex-1 rounded-md py-1.5 text-sm font-medium transition-colors",
+                "flex-1 cursor-pointer rounded-md py-1.5 text-sm font-medium transition-colors",
                 tab === t
                   ? "bg-primary text-primary-foreground"
                   : "text-muted-foreground hover:text-foreground"

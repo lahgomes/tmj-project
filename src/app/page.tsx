@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { AuthModal } from "@/components/auth-modal"
+import { TypewriterText } from "@/components/typewriter-text"
 import {
   Briefcase,
   LayoutDashboard,
@@ -59,9 +60,9 @@ export default function Home() {
       />
 
       {/* Header */}
-      <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur-sm">
+      <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur-sm shadow-sm">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
-          <div className="group flex cursor-default items-center gap-1.5 font-bold text-base">
+          <div className="group flex cursor-pointer items-center gap-1.5 font-bold text-base">
             <Briefcase className="size-4" />
             <span>TMJ</span>
             <span className="max-w-0 overflow-hidden whitespace-nowrap font-normal text-sm text-muted-foreground transition-all duration-500 ease-in-out group-hover:max-w-48">
@@ -86,11 +87,12 @@ export default function Home() {
         </Badge>
 
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight max-w-2xl leading-tight">
-          Buscar emprego é difícil.{" "}
-          <span className="text-muted-foreground">
-            Se organizar não precisa ser.
-          </span>
+          Buscar emprego é difícil.
         </h1>
+
+        <p className="mt-3 text-2xl sm:text-3xl md:text-4xl font-semibold text-muted-foreground max-w-2xl">
+          <TypewriterText text="Se organizar não precisa ser." delay={55} />
+        </p>
 
         <p className="mt-4 sm:mt-6 text-base sm:text-lg text-muted-foreground max-w-xl">
           O TMJ te ajuda a organizar cada candidatura, registrar os processos
