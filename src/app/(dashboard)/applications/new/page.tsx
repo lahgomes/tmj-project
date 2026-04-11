@@ -25,6 +25,8 @@ const PLATFORMS = [
   "Indeed",
   "Catho",
   "InfoJobs",
+  "InHire",
+  "Greenhouse",
   "Trampos.co",
   "Outros",
 ]
@@ -38,6 +40,7 @@ export default function NewApplicationPage() {
     company: "",
     jobUrl: "",
     platform: "",
+    platformCustom: "",
     workModel: "REMOTE" as WorkModel,
     location: "",
     salary: "",
@@ -70,7 +73,7 @@ export default function NewApplicationPage() {
         jobTitle: form.jobTitle,
         company: form.company,
         jobUrl: form.jobUrl || undefined,
-        platform: form.platform,
+        platform: form.platform === "Outros" ? form.platformCustom : form.platform,
         workModel: form.workModel,
         location: form.location || undefined,
         salary: form.salary || undefined,
@@ -91,7 +94,7 @@ export default function NewApplicationPage() {
   }
 
   return (
-    <div className="p-6 max-w-2xl mx-auto">
+    <div className="p-4 sm:p-6 max-w-2xl mx-auto">
       <div className="mb-6">
         <Button variant="ghost" size="sm" asChild className="-ml-2 mb-2">
           <Link href="/applications">
@@ -135,21 +138,34 @@ export default function NewApplicationPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <Label htmlFor="platform">Plataforma *</Label>
-                <Input
-                  id="platform"
-                  name="platform"
-                  placeholder="LinkedIn, Gupy, Indeed..."
-                  list="platform-suggestions"
+                <Label>Plataforma *</Label>
+                <Select
                   value={form.platform}
-                  onChange={handleChange}
+                  onValueChange={(v) =>
+                    setForm((prev) => ({ ...prev, platform: v, platformCustom: "" }))
+                  }
                   required
-                />
-                <datalist id="platform-suggestions">
-                  {PLATFORMS.map((p) => (
-                    <option key={p} value={p} />
-                  ))}
-                </datalist>
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Selecione a plataforma" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {PLATFORMS.map((p) => (
+                      <SelectItem key={p} value={p}>
+                        {p}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                {form.platform === "Outros" && (
+                  <Input
+                    name="platformCustom"
+                    placeholder="Nome da plataforma"
+                    value={form.platformCustom}
+                    onChange={handleChange}
+                    required
+                  />
+                )}
               </div>
               <div className="space-y-1.5">
                 <Label>Modalidade *</Label>

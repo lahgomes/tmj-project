@@ -6,7 +6,7 @@ function Skeleton({ className }: { className?: string }) {
 
 export default function DashboardLoading() {
   return (
-    <div className="p-6 max-w-5xl mx-auto">
+    <div className="p-4 sm:p-6 max-w-5xl mx-auto">
       {/* Title */}
       <div className="mb-8">
         <Skeleton className="h-7 w-48 mb-2" />

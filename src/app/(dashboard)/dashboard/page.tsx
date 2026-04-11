@@ -60,7 +60,7 @@ export default async function DashboardPage() {
   ]
 
   return (
-    <div className="p-6 max-w-5xl mx-auto">
+    <div className="p-4 sm:p-6 max-w-5xl mx-auto">
       <div className="mb-8">
         <h1 className="text-2xl font-bold">
           Bem-vindo de volta

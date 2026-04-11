@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { signOut } from "next-auth/react"
-import { LayoutDashboard, Briefcase, LogOut } from "lucide-react"
+import { LayoutDashboard, Briefcase, LogOut, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { cn } from "@/lib/utils"
@@ -18,24 +18,42 @@ interface SidebarProps {
     name?: string | null | undefined
     email?: string | null | undefined
   }
+  isOpen: boolean
+  onClose: () => void
 }
 
-export function Sidebar({ user }: SidebarProps) {
+export function Sidebar({ user, isOpen, onClose }: SidebarProps) {
   const pathname = usePathname()
 
   return (
-    <aside className="w-56 border-r flex flex-col shrink-0">
+    <aside
+      className={cn(
+        "fixed inset-y-0 left-0 z-50 flex w-56 flex-col border-r bg-background transition-transform duration-300",
+        "md:static md:z-auto md:translate-x-0",
+        isOpen ? "translate-x-0" : "-translate-x-full"
+      )}
+    >
       {/* Logo */}
-      <div className="px-4 py-5">
+      <div className="flex items-start justify-between px-4 py-5">
         <Link
           href="/dashboard"
           className="flex items-center gap-2 font-bold text-lg"
+          onClick={onClose}
         >
           <Briefcase className="size-5" />
           <span>TMJ</span>
         </Link>
-        <p className="text-xs text-muted-foreground mt-0.5">Track My Jobs</p>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="-mr-2 md:hidden"
+          onClick={onClose}
+        >
+          <X className="size-4" />
+          <span className="sr-only">Fechar menu</span>
+        </Button>
       </div>
+      <p className="px-4 -mt-3 text-xs text-muted-foreground pb-3">Track My Jobs</p>
 
       <Separator />
 
@@ -51,6 +69,7 @@ export function Sidebar({ user }: SidebarProps) {
             <Link
               key={item.href}
               href={item.href}
+              onClick={onClose}
               className={cn(
                 "flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors",
                 isActive

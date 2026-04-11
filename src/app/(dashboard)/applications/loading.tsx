@@ -4,7 +4,7 @@ function Skeleton({ className }: { className?: string }) {
 
 export default function ApplicationsLoading() {
   return (
-    <div className="p-6 max-w-5xl mx-auto">
+    <div className="p-4 sm:p-6 max-w-5xl mx-auto">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <Skeleton className="h-7 w-40" />
