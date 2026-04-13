@@ -6,8 +6,7 @@
 
 Projeto desenvolvido como portfólio pessoal, com foco em aprender e praticar desenvolvimento fullstack moderno.
 
-Acesse em: [tmj-project.vercel.app/](https://tmj-project.vercel.app/)
----
+### Acesse em: [tmj-project.vercel.app/](https://tmj-project.vercel.app/)
 
 ## Funcionalidades
 
@@ -20,8 +19,24 @@ Acesse em: [tmj-project.vercel.app/](https://tmj-project.vercel.app/)
 - Interface responsiva, mobile first
 
 ---
+<img width="1904" height="1017" alt="dash1" src="https://github.com/user-attachments/assets/b8d9085f-7aba-4ff9-a3da-74e66e1eefb4" />
 
-## Stack
+<img width="1917" height="1018" alt="dash2" src="https://github.com/user-attachments/assets/c7b3db13-78fc-47ec-a76d-18a85cebee57" />
+
+<img width="1919" height="1015" alt="dash4" src="https://github.com/user-attachments/assets/211db488-a30e-4449-8c94-5815da407656" />
+
+<img width="1915" height="1016" alt="dash3" src="https://github.com/user-attachments/assets/f9a8199c-5738-4315-b7ae-d309039484b6" />
+
+<img width="1915" height="1019" alt="landing1" src="https://github.com/user-attachments/assets/4930eada-9278-4821-b7ba-8efa6cfd4639" />
+
+<img width="1914" height="1019" alt="landing2" src="https://github.com/user-attachments/assets/197b3af9-97a2-4d67-ac6c-1febb2ec00d1" />
+
+
+[tmj-simulacao.webm](https://github.com/user-attachments/assets/805374f6-ebfe-4b9b-a6d1-0c958a6facb4)
+
+---
+
+## Stacks
 
 | Camada | Tecnologia |
 |---|---|
@@ -102,12 +117,6 @@ npm run dev
 ```
 
 Para desenvolvimento acesse [http://localhost:3000](http://localhost:3000).
-
----
-
-## Deploy
-
-A aplicação está configurada para deploy na [Vercel](https://vercel.com). Basta conectar o repositório e adicionar as variáveis de ambiente pelo painel da Vercel.
 
 ---
 
