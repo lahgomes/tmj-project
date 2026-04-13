@@ -6,6 +6,7 @@
 
 Projeto desenvolvido como portfólio pessoal, com foco em aprender e praticar desenvolvimento fullstack moderno.
 
+Acesse em: [tmj-project.vercel.app/](https://tmj-project.vercel.app/)
 ---
 
 ## Funcionalidades
@@ -100,7 +101,7 @@ npx prisma generate
 npm run dev
 ```
 
-Acesse [http://localhost:3000](http://localhost:3000).
+Para desenvolvimento acesse [http://localhost:3000](http://localhost:3000).
 
 ---
 
