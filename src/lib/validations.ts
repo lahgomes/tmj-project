@@ -20,10 +20,6 @@ export const registerSchema = z
 export type LoginSchema = z.infer<typeof loginSchema>
 export type RegisterSchema = z.infer<typeof registerSchema>
 
-// -----------------------------------------------
-// Application
-// -----------------------------------------------
-
 export const applicationSchema = z.object({
   jobTitle: z.string().min(2, "Job title must be at least 2 characters"),
   company: z.string().min(1, "Company is required"),
@@ -44,10 +40,6 @@ export const updateApplicationSchema = applicationSchema.partial()
 export type ApplicationSchema = z.infer<typeof applicationSchema>
 export type UpdateApplicationSchema = z.infer<typeof updateApplicationSchema>
 
-// -----------------------------------------------
-// Stage
-// -----------------------------------------------
-
 export const stageSchema = z.object({
   name: z.string().min(1, "Stage name is required"),
   order: z.number().int().optional(),
@@ -60,10 +52,6 @@ export const updateStageSchema = stageSchema.partial()
 
 export type StageSchema = z.infer<typeof stageSchema>
 export type UpdateStageSchema = z.infer<typeof updateStageSchema>
-
-// -----------------------------------------------
-// Note
-// -----------------------------------------------
 
 export const noteSchema = z.object({
   content: z.string().min(1, "Note content is required"),

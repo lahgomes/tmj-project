@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { AuthModal } from "@/components/auth-modal"
 import { TypewriterText } from "@/components/typewriter-text"
 import {
@@ -59,13 +58,12 @@ export default function Home() {
         onOpenChange={(open) => setModal((prev) => ({ ...prev, open }))}
       />
 
-      {/* Header */}
       <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur-sm shadow-sm">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
           <div className="group flex cursor-pointer items-center gap-1.5 font-bold text-base">
             <Briefcase className="size-4" />
             <span>TMJ</span>
-            <span className="max-w-0 overflow-hidden whitespace-nowrap font-normal text-sm text-muted-foreground transition-all duration-500 ease-in-out group-hover:max-w-48">
+            <span className="font-normal text-sm text-muted-foreground sm:max-w-0 sm:overflow-hidden sm:whitespace-nowrap sm:transition-all sm:duration-500 sm:ease-in-out sm:group-hover:max-w-48">
               {" "}Track My Jobs
             </span>
           </div>
@@ -80,11 +78,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero */}
       <section className="flex flex-col items-center text-center px-4 sm:px-6 pt-14 pb-12 sm:pt-24 sm:pb-16">
-        <Badge variant="secondary" className="mb-5 sm:mb-6">
-          Gratuito para usar
-        </Badge>
 
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight max-w-2xl leading-tight">
           Buscar emprego é difícil.
@@ -101,7 +95,7 @@ export default function Home() {
 
         <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 w-full max-w-xs sm:max-w-none sm:w-auto">
           <Button size="lg" className="w-full sm:w-auto" onClick={() => openModal("register")}>
-            Começar agora, é grátis
+            Comece agora, é grátis
           </Button>
           <Button size="lg" variant="outline" className="w-full sm:w-auto" onClick={() => openModal("login")}>
             Já tenho uma conta
@@ -109,7 +103,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features */}
       <section className="px-4 sm:px-6 py-12 sm:py-16">
         <div className="max-w-5xl mx-auto">
           <p className="text-center text-xs font-medium tracking-widest uppercase text-muted-foreground mb-8 sm:mb-10">
@@ -137,7 +130,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA final */}
       <section className="border-t bg-muted/30 px-4 sm:px-6 py-12 sm:py-20 text-center">
         <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">
           Pronto para ter mais clareza na sua busca?
@@ -151,7 +143,6 @@ export default function Home() {
         </Button>
       </section>
 
-      {/* Footer */}
       <footer className="border-t px-4 sm:px-6 py-5 sm:py-6 text-center text-xs text-muted-foreground">
         © {new Date().getFullYear()} TMJ · feito com carinho por{" "}
         <a

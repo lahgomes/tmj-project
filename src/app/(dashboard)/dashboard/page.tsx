@@ -67,11 +67,10 @@ export default async function DashboardPage() {
           {session.user.name ? `, ${session.user.name.split(" ")[0]}` : ""}
         </h1>
         <p className="text-muted-foreground text-sm mt-1">
-          Aqui está um resumo da sua busca de emprego.
+          Aqui está um resumo da sua busca por emprego.
         </p>
       </div>
 
-      {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {statsCards.map((card) => (
           <Card key={card.title}>
@@ -91,7 +90,6 @@ export default async function DashboardPage() {
         ))}
       </div>
 
-      {/* Recent Applications */}
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold">Candidaturas Recentes</h2>
         <Button asChild variant="outline" size="sm">
@@ -109,7 +107,7 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
       ) : (
-        <div className="space-y-2">
+        <div className="flex flex-col space-y-2">
           {recent.map((app) => (
             <Link key={app.id} href={`/applications/${app.id}`}>
               <Card className="hover:bg-accent/40 transition-colors cursor-pointer">

@@ -7,13 +7,11 @@ function Skeleton({ className }: { className?: string }) {
 export default function DashboardLoading() {
   return (
     <div className="p-4 sm:p-6 max-w-5xl mx-auto">
-      {/* Title */}
       <div className="mb-8">
         <Skeleton className="h-7 w-48 mb-2" />
         <Skeleton className="h-4 w-64" />
       </div>
 
-      {/* Stats cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {Array.from({ length: 4 }).map((_, i) => (
           <Card key={i}>
@@ -29,7 +27,6 @@ export default function DashboardLoading() {
         ))}
       </div>
 
-      {/* Recent applications */}
       <div>
         <div className="flex items-center justify-between mb-4">
           <Skeleton className="h-5 w-40" />

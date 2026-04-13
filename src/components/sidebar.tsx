@@ -33,7 +33,6 @@ export function Sidebar({ user, isOpen, onClose }: SidebarProps) {
         isOpen ? "translate-x-0" : "-translate-x-full"
       )}
     >
-      {/* Logo */}
       <div className="flex items-start justify-between px-4 py-5">
         <Link
           href="/dashboard"
@@ -57,7 +56,6 @@ export function Sidebar({ user, isOpen, onClose }: SidebarProps) {
 
       <Separator />
 
-      {/* Navigation */}
       <nav className="flex-1 p-3 space-y-1">
         {navItems.map((item) => {
           const isActive =
@@ -86,7 +84,6 @@ export function Sidebar({ user, isOpen, onClose }: SidebarProps) {
 
       <Separator />
 
-      {/* User footer */}
       <div className="p-3 space-y-1">
         <div className="px-3 py-2">
           <p className="text-sm font-medium truncate">{user.name ?? "Usuário"}</p>

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import {
@@ -30,21 +30,10 @@ export function AuthModal({
   const router = useRouter()
   const [tab, setTab] = useState<AuthTab>(defaultTab)
 
-  // Sync tab and reset errors when modal opens
-  useEffect(() => {
-    if (open) {
-      setTab(defaultTab)
-      setLoginError("")
-      setRegisterError("")
-    }
-  }, [open, defaultTab])
-
-  // Login state
   const [loginForm, setLoginForm] = useState({ email: "", password: "" })
   const [loginError, setLoginError] = useState("")
   const [loginLoading, setLoginLoading] = useState(false)
 
-  // Register state
   const [registerForm, setRegisterForm] = useState({
     name: "",
     email: "",
@@ -53,6 +42,18 @@ export function AuthModal({
   })
   const [registerError, setRegisterError] = useState("")
   const [registerLoading, setRegisterLoading] = useState(false)
+
+  function handleOpenChange(value: boolean) {
+    if (!value) {
+      setLoginError("")
+      setRegisterError("")
+      setLoginLoading(false)
+      setRegisterLoading(false)
+    } else {
+      setTab(defaultTab)
+    }
+    onOpenChange(value)
+  }
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault()
@@ -126,13 +127,12 @@ export function AuthModal({
   }
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent className="sm:max-w-sm">
         <DialogHeader>
           <DialogTitle className="text-center text-xl">Track My Jobs</DialogTitle>
         </DialogHeader>
 
-        {/* Tab switcher */}
         <div className="flex rounded-lg border p-1 gap-1">
           {(["login", "register"] as const).map((t) => (
             <button
@@ -151,7 +151,6 @@ export function AuthModal({
           ))}
         </div>
 
-        {/* Login form */}
         {tab === "login" && (
           <form onSubmit={handleLogin} className="space-y-4">
             {loginError && (
@@ -193,7 +192,6 @@ export function AuthModal({
           </form>
         )}
 
-        {/* Register form */}
         {tab === "register" && (
           <form onSubmit={handleRegister} className="space-y-4">
             {registerError && (

@@ -90,7 +90,6 @@ export default function ApplicationsPage() {
         </Button>
       </div>
 
-      {/* Filters */}
       <div className="flex gap-3 mb-6">
         <form
           onSubmit={handleSearchSubmit}
@@ -122,7 +121,6 @@ export default function ApplicationsPage() {
         </Select>
       </div>
 
-      {/* Table */}
       {loading ? (
         <div className="text-center py-12 text-muted-foreground text-sm">
           Carregando...

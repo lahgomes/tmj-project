@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react"
 
 interface TypewriterTextProps {
   text: string
-  delay?: number        // ms between each character
+  delay?: number
   className?: string
 }
 

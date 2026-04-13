@@ -279,7 +279,6 @@ export default function ApplicationDetailPage({
 
   return (
     <div className="p-4 sm:p-6 max-w-3xl mx-auto space-y-6">
-      {/* Back button */}
       <div>
         <Button variant="ghost" size="sm" asChild className="-ml-2">
           <Link href="/applications">
@@ -289,7 +288,6 @@ export default function ApplicationDetailPage({
         </Button>
       </div>
 
-      {/* Header */}
       <div className="space-y-3">
         <div className="flex items-start justify-between gap-4">
           <div>
@@ -317,7 +315,6 @@ export default function ApplicationDetailPage({
           </Button>
         </div>
 
-        {/* Meta badges */}
         <div className="flex flex-wrap items-center gap-2">
           <StatusBadge status={application.status} />
           <Badge variant="outline">{workModelLabel[application.workModel]}</Badge>
@@ -339,7 +336,6 @@ export default function ApplicationDetailPage({
           )}
         </div>
 
-        {/* Tags */}
         {application.tags.length > 0 && (
           <div className="flex flex-wrap gap-1">
             {application.tags.map((tag) => (
@@ -351,7 +347,6 @@ export default function ApplicationDetailPage({
         )}
       </div>
 
-      {/* Status Update */}
       <Card>
         <CardHeader className="pb-3">
           <CardTitle className="text-sm font-medium">Atualizar Status</CardTitle>
@@ -385,7 +380,6 @@ export default function ApplicationDetailPage({
         </CardContent>
       </Card>
 
-      {/* Stages */}
       <Card>
         <CardHeader className="flex flex-row items-center justify-between pb-3">
           <CardTitle className="text-base">Etapas</CardTitle>
@@ -496,7 +490,6 @@ export default function ApplicationDetailPage({
         </CardContent>
       </Card>
 
-      {/* Notes */}
       <Card>
         <CardHeader className="pb-3">
           <CardTitle className="text-base">Anotações</CardTitle>
@@ -546,7 +539,6 @@ export default function ApplicationDetailPage({
         </CardContent>
       </Card>
 
-      {/* Job Description */}
       {application.description && (
         <Card>
           <CardHeader className="pb-3">

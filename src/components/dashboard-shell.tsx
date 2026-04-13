@@ -18,7 +18,6 @@ export function DashboardShell({ user, children }: DashboardShellProps) {
 
   return (
     <div className="flex h-screen overflow-hidden">
-      {/* Backdrop overlay (mobile only) */}
       {sidebarOpen && (
         <div
           className="fixed inset-0 z-40 bg-black/50 md:hidden"
@@ -26,16 +25,13 @@ export function DashboardShell({ user, children }: DashboardShellProps) {
         />
       )}
 
-      {/* Sidebar */}
       <Sidebar
         user={user}
         isOpen={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
       />
 
-      {/* Main area */}
       <div className="flex flex-1 flex-col overflow-hidden">
-        {/* Mobile top bar */}
         <header className="flex h-14 shrink-0 items-center gap-3 border-b bg-background px-4 md:hidden">
           <Button
             variant="ghost"
