@@ -70,6 +70,7 @@ src/
 prisma/
   schema.prisma     modelo de dados
 ```
+
 ---
 
 ## Imagens do projeto
