@@ -8,6 +8,17 @@ Projeto desenvolvido como portfólio pessoal, com foco em aprender e praticar de
 
 ### Acesse em: [tmj-project.vercel.app/](https://tmj-project.vercel.app/)
 
+## Índice
+
+- [Funcionalidades](#funcionalidades)
+- [Imagens do projeto](#screenshots)
+- [Stacks](#stacks)
+- [Estrutura do projeto](#estrutura-do-projeto)
+- [Rodando localmente](#rodando-localmente)
+- [Autora](#autora)
+
+---
+
 ## Funcionalidades
 
 - Cadastro e autenticação com e-mail e senha
@@ -19,6 +30,9 @@ Projeto desenvolvido como portfólio pessoal, com foco em aprender e praticar de
 - Interface responsiva, mobile first
 
 ---
+
+## Imagens do projeto
+
 <img width="1904" height="1017" alt="dash1" src="https://github.com/user-attachments/assets/b8d9085f-7aba-4ff9-a3da-74e66e1eefb4" />
 
 <img width="1917" height="1018" alt="dash2" src="https://github.com/user-attachments/assets/c7b3db13-78fc-47ec-a76d-18a85cebee57" />
